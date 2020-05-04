@@ -1,4 +1,5 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import Header from '../components/Header'
 import NewsCard from './NewsCard'
 class NewsBody extends React.Component{
@@ -18,16 +19,12 @@ class NewsBody extends React.Component{
             <Header/>
                 <div className="container news-body">
                     <div className="row">
+                        
+                    </div>
+                    <div className="row">
                         <NewsCard/>
                         <NewsCard/>
-                        <NewsCard/>
-                        <NewsCard/>
-                        <NewsCard/>
-                        <NewsCard/>
-                        <NewsCard/>
-                        <NewsCard/>
-                        <NewsCard/>
-                        <NewsCard/>
+
 
                     </div>
                     
