@@ -79,7 +79,7 @@ class WeatherBody extends React.Component{
     render(){
         return(
             <div>
-                <Header getData={this.getData}/>
+                <Header renderedBy="WeatherBody" getData={this.getData}/>
                 <div className="weather-body">
                     <VideoBody/>
                     <div className="">

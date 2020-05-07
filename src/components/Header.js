@@ -7,18 +7,6 @@ class Header extends React.Component{
     constructor(props){
         super(props)
     }
-    // onSubmit=(e)=>{
-    //     e.preventDefault()
-    //      //this.props.getLocation(e.target.locationsearch.value)
-    //     console.log(e.target.locationsearch.value)
-    //     this.props.updateLocation(e.target.locationsearch.value)
-    //     setTimeout(()=>{
-    //         this.props.fetchCoord(this.props.location_reducer.location)
-    //         setTimeout(()=>{
-    //             this.props.fetchWeather(this.props.location_reducer.long,this.props.location_reducer.lat)
-    //         },5000),1000})
-    //     //this.props.fetchCoord(this.props.location) 
-    // }
     componentDidMount=()=>{
         console.log("inside component didMount before if Header: "+this.props.location_reducer.long);
         
@@ -44,10 +32,14 @@ class Header extends React.Component{
         e.preventDefault()
          //this.props.getLocation(e.target.locationsearch.value)
         console.log(e.target.locationsearch.value)
+        if(e.target.locationsearch.placeholder==="Enter Location"){
         this.props.updateLocation(e.target.locationsearch.value)
         setTimeout(()=>{
             this.props.fetchCoord(this.props.location_reducer.location)
             ,1000})
+        }else{
+            this.props.fetchNews(e.target.locationsearch.value,undefined)
+        }
     }
     render(){
         return(
@@ -62,7 +54,7 @@ class Header extends React.Component{
                 
                 
                 <form onSubmit={this.onSubmit} className="form-inline my-2 my-lg-0">
-                    <input name="locationsearch" id="location-inp" className="nav-input" type="search" placeholder="Enter Location" aria-label="Search" />
+                    <input name="locationsearch" id="location-inp" className="nav-input" type="search" placeholder={this.props.renderedBy==="WeatherBody"?"Enter Location":"Enter Topic"} aria-label="Search" />
                     <button className="btn  my-2 my-sm-0" type="submit">Search</button>
                 </form>
 
