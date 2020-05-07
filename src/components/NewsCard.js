@@ -1,14 +1,13 @@
 import React from 'react'
 
-const NewsCard=()=>{
+const NewsCard=(props)=>{
     return(
-        <div className="col-sm-3 col-6">
-            <div className="card">
-                <img src="..." className="card-img-top" alt="..."/>
-                    <div className="card-body">
-                        <h5 className="card-title">Card title</h5>
-                        <p className="card-text">content.</p>
-                        <a href="#" className="btn btn-primary">Go somewhere</a>
+        <div className="col-sm-3">
+            <div className="card img-fluid">
+                <img src={props.image} className="card-img-top" alt="..."/>
+                    <div className="card-img-overlay">
+                        <p className="">{props.heading}</p>
+                        <a href="#" className="btn-newsCard">Detail</a>
                     </div>
             </div>
         </div>
