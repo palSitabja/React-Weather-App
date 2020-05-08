@@ -53,29 +53,9 @@ class WeatherBody extends React.Component{
             })
         }
     }
-    // componentDidMount=()=>{
-    //     console.log("Inside component did mount before if:\n"+this.props.weather.data.current)
-    //     if(this.props.weather.data.current){
-    //         console.log("Inside component did mount:\n"+this.props.weather.data.current[0])
-            
-    //         this.setState(()=>{
-    //             return{
-    //                 current:data.current,
-    //                 location:this.props.weather.data.timezone,
-    //                 description:this.props.weather.data.current.weather[0].description,
-    //                 temp:parseInt(this.props.weather.data.current.temp),
-    //                 humidity:this.props.weather.data.current.humidity+' hPa',
-    //                 rain:this.props.weather.data.current.rain?this.props.weather.data.current.rain+" mm":"No rain",
-    //                 pressure:this.props.weather.data.current.pressure+' %',
-    //                 wind_speed:this.props.weather.data.current.wind_speed+' met/s',
-    //                 sunrise:moment.unix(this.props.weather.data.current.sunrise).format(" h:mm a"),
-    //                 sunset:moment.unix(this.props.weather.data.current.sunset).format(" h:mm a"),
-    //                 loading:false,
-    //                 class:"notransition"
-    //             }
-    //         })
-    //     }
-    // }
+     componentDidMount=()=>{
+        document.body.style.paddingTop='0'
+     }
     render(){
         return(
             <div>

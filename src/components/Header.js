@@ -8,6 +8,10 @@ class Header extends React.Component{
         super(props)
     }
     componentDidMount=()=>{
+        if(this.props.renderedBy==="NewsBody"){
+            document.getElementById("nav").style.backgroundColor="#292929"
+            document.getElementById("nav").classList.add("fixed-top")
+        }
         console.log("inside component didMount before if Header: "+this.props.location_reducer.long);
         
         if(this.props.location_reducer.long){
@@ -21,6 +25,7 @@ class Header extends React.Component{
     componentDidUpdate=(prevProps)=>{
         //console.log("previous: "+prevProps.location_reducer.long);
         //console.log("updated: "+this.props.location_reducer.long);
+
         if((prevProps.location_reducer.long!==this.props.location_reducer.long) ){
             //console.log("inside if");
             this.props.fetchWeather(this.props.location_reducer.long,this.props.location_reducer.lat)
@@ -43,8 +48,10 @@ class Header extends React.Component{
     }
     render(){
         return(
-            <nav className="navbar navbar-expand-lg d-flex flex-row justify-content-around">
-                <h1 className="">Weather</h1>
+            <nav id="nav" className="navbar navbar-expand-lg d-flex flex-row justify-content-around">
+                <h1 className="">
+                {this.props.renderedBy==="WeatherBody"?"Weather":this.props.renderedBy==="NewsBody"?"News":"Forecast"}
+                </h1>
                 
                     <div className="" role="group">
                         <NavLink to="/" className="btn mr-4 custom" activeClassName="is-active" exact={true}>Weather</NavLink>

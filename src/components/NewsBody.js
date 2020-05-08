@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import {getTimezone} from 'countries-and-timezones'
 import Header from '../components/Header'
 import NewsCard from './NewsCard'
+import MoonLoader from "react-spinners/MoonLoader"
 class NewsBody extends React.Component{
     constructor(props){
         super(props)
@@ -37,6 +38,7 @@ class NewsBody extends React.Component{
         document.body.style.backgroundColor="#292929"
         document.body.style.backgroundSize='cover'
         document.body.style.backgroundRepeat='repeat'
+        document.body.style.paddingTop='10rem'
         //document.getElementsByClassName('btn').
         //document.getElementsByClassName('btn').style.backgroundColor='#606060'
         if(this.props.weather.data!==""){
@@ -49,14 +51,14 @@ class NewsBody extends React.Component{
         return(
             <div>
             <Header fetchNews={this.fetchNews} renderedBy="NewsBody"/>
-                <div className="container news-body">
+                <div className="container-fluid news-body">
                     <div className="row">
                     { 
-                        this.state.loading?<h1>Loading</h1>:
-                        //{console.log("inside else: "+this.state.news.articles)}
-                        this.state.news.articles.map(element => {
+                        this.state.loading
+                        ?<div className="loader-h1"><MoonLoader size={150} color={"white"}/></div>
+                        :this.state.news.articles.map(element => {
                             return(
-                            <NewsCard heading={element.title} link={element.url} key={element.author} image={element.urlToImage}/>
+                            <NewsCard heading={element.title} link={element.url} key={element.url} image={element.urlToImage}/>
                             )   
                         })
                     }

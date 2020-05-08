@@ -6,7 +6,7 @@ const WeatherInfo=(props)=>{
         <div className="info-Container">
             <h5 className="weatherInfo-h5">{props.header}</h5>
             {props.icon}
-            <p className={props.class} style={{color: "white",textAlign:"center" ,"text-shadow": "1px 1px 1px #000000"}}>{props.info}</p>
+            <p className={props.class} style={{color: "white",textAlign:"center" ,"textShadow": "1px 1px 1px #000000"}}>{props.info}</p>
         </div>
     )
 }
