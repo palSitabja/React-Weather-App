@@ -202,3 +202,29 @@ p{
   left:40%;
   top: 40%;
 }
+.forecat-card{
+  /* background-color: #ffffff; */
+  background-color: #7f5a83;
+  background-image: linear-gradient(315deg, #7f5a83 0%, #0d324d 74%);
+
+}
+.card-body{
+  padding-top: 0px;
+}
+.card-title {
+  margin-bottom: 0;
+}
+/* .card-body img{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+} */
+.chart{
+  height: 215px;
+  margin-top: 25px;
+  padding: 0;
+}
+canvas{
+  padding: 0;
+}

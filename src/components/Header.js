@@ -61,7 +61,7 @@ class Header extends React.Component{
                 
                 
                 <form onSubmit={this.onSubmit} className="form-inline my-2 my-lg-0">
-                    <input name="locationsearch" id="location-inp" className="nav-input" type="search" placeholder={this.props.renderedBy==="WeatherBody"?"Enter Location":"Enter Topic"} aria-label="Search" />
+                    <input name="locationsearch" id="location-inp" className="nav-input" type="search" placeholder={this.props.renderedBy==="NewsBody"?"Enter Topoc":"Enter Location"} aria-label="Search" />
                     <button className="btn  my-2 my-sm-0" type="submit">Search</button>
                 </form>
 
