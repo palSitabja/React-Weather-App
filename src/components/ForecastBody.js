@@ -12,11 +12,10 @@ class ForecastBody extends React.Component{
         super(props)
     }
     componentDidMount(){
-        console.log('mounted: '+JSON.stringify(this.props.weather));
-        
+        //console.log('mounted: '+JSON.stringify(this.props.weather));
+        document.body.style.paddingTop='10rem'
         //document.body.style.backgroundImage="url('/video/aerial-view-and-grayscale-photography-of-high-rise-buildings-1105766.jpg')"
         //document.body.style.backgroundAttachment='fixed'
-        document.body.style.paddingTop='0'
         document.body.style.backgroundColor="#292929"
         document.body.style.backgroundSize='cover'
         document.body.style.backgroundRepeat='repeat'

@@ -4,10 +4,9 @@ import Header from '../components/Header'
 import VideoBody from './VideoBody'
 import WeatherInfo from './WeatherInfo'
 import moment from 'moment'
-import { css } from "@emotion/core";
 import BeatLoader from "react-spinners/BeatLoader";
-import { WiCelsius,WiDayFog,WiHail,WiHumidity,WiBarometer,WiSandstorm,WiSunrise,WiDayHaze } from "react-icons/wi";
-import { BsCursor } from "react-icons/bs";
+import { WiCelsius,WiDayFog,WiThermometer,WiHumidity,WiBarometer,WiSandstorm,WiSunrise,WiDayHaze } from "react-icons/wi";
+
 
  
 class WeatherBody extends React.Component{
@@ -22,12 +21,13 @@ class WeatherBody extends React.Component{
             loading:true,
             temp:"loading..",
             humidity:"loading..",
-            rain:"loading..",
+            feels_like:"loading..",
             pressure:"loading..",
             wind_speed:"loading..",
             sunrise:"loading..",
             sunset:"loading..",
-            class:"loading"
+            class:"loading",
+            icon:"none"
         }
     }
     getData=(location,data)=>{
@@ -42,13 +42,14 @@ class WeatherBody extends React.Component{
                     description:this.props.weather.data.current.weather[0].description,
                     temp:parseInt(this.props.weather.data.current.temp),
                     humidity:this.props.weather.data.current.humidity+' hPa',
-                    rain:this.props.weather.data.current.rain?this.props.weather.data.current.rain+" mm":"No rain",
+                    feels_like:this.props.weather.data.current.feels_like+' C',
                     pressure:this.props.weather.data.current.pressure+' %',
                     wind_speed:this.props.weather.data.current.wind_speed+' met/s',
                     sunrise:moment.unix(this.props.weather.data.current.sunrise).format(" h:mm a"),
                     sunset:moment.unix(this.props.weather.data.current.sunset).format(" h:mm a"),
                     loading:false,
-                    class:"notransition"
+                    class:"notransition",
+                    icon:this.props.weather.data.current.weather[0].icon
                 }
             })
         }
@@ -65,7 +66,9 @@ class WeatherBody extends React.Component{
                     <div className="">
                         <p style={{color: "white",textAlign:"center"}} className="">Time Zone: {this.state.location}</p>
                         <div className="d-flex flex-row justify-content-center  ">
-                            <WiDayFog className="icon-cloud"/>
+                        {
+                            this.state.icon==="none"?<WiDayFog className="icon-cloud"/>:<img src={"http://openweathermap.org/img/wn/"+this.state.icon+"@2x.png"} alt=""/>
+                        }
                             <h1 className="display-2">{isNaN(this.state.temp)? <BeatLoader color='white' loading={this.state.loading} />: parseInt(this.state.temp)}</h1>
                             <WiCelsius size={64} className="icon-c"/>
                         </div>
@@ -74,7 +77,7 @@ class WeatherBody extends React.Component{
                         
 
                         <div className="d-flex flex-row justify-content-center  ">
-                            <WeatherInfo class={this.state.class} icon={<WiHumidity className="other-icons"/>} header="Humidity" info={this.state.humidity} />
+                            <WeatherInfo class={this.state.class} icon={<WiThermometer className="other-icons"/>} header="Real Feel" info={this.state.feels_like} />
 
                             <WeatherInfo class={this.state.class} icon={<WiBarometer className="other-icons"/>} header="Pressure" info={this.state.pressure} />
 
@@ -89,7 +92,7 @@ class WeatherBody extends React.Component{
 
                             <WeatherInfo class={this.state.class} icon={<WiDayHaze className="other-icons"/>} header="Sunset" info={this.state.sunset} />
 
-                            <WeatherInfo class={this.state.class} icon={<WiHail className="other-icons"/>} header="Rain" info={this.state.rain} />
+                            <WeatherInfo class={this.state.class} icon={<WiHumidity className="other-icons"/>} header="Humidity" info={this.state.humidity} />
                         </div>
                 </div>
             </div>

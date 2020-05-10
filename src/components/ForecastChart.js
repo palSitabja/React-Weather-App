@@ -38,9 +38,9 @@ class ForecastChart extends React.Component{
                 borderColor: [
                 '#AD35BA',
                 ],
-                borderWidth: 2,
-                pointBorderColor: "#fff",
-                pointBackgroundColor: "rgba(173, 53, 186, 0.1)",
+                 borderWidth: 2,
+                 pointBorderColor: "#fff",
+                 //pointBackgroundColor: "rgba(173, 53, 186, 0.1)",
             },
             {
                 label: "Min Temperature",
@@ -49,9 +49,9 @@ class ForecastChart extends React.Component{
                 borderColor: [
                 '#464668',
                 ],
-                borderWidth: 2,
-                pointBorderColor: "#fff",
-                pointBackgroundColor: "rgba(173, 53, 186, 0.1)",
+                 borderWidth: 2,
+                 pointBorderColor: "#fff",
+                // pointBackgroundColor: "rgba(173, 53, 186, 0.1)",
             }
             ]
         },
@@ -62,16 +62,17 @@ class ForecastChart extends React.Component{
                 display: true,
                 text: 'Weekly min and max Temperarture'
             },
-            // tooltips: {
-            //     mode: 'index',
-            //     intersect: false,
-            //     backgroundColor	:'rgba(255, 255, 255, 0.1)',
-            //     //titleFontColor:'#313440',
-            //     //bodyFontColor:'#313440',
-            //     bodyFontStyle:'bold',
-            //     borderColor: '#000000',
-            //     borderWidth: 1,
-            // },
+            tooltips: {
+                mode: 'index',
+                intersect: false,
+                backgroundColor	:'rgba(255, 255, 255, 0.1)',
+                titleFontColor:'#313440',
+                bodyFontColor:'#313440',
+                bodyFontStyle:'bold',
+                borderColor: '#000000',
+                borderWidth: 1,
+                displayColors:true
+            },
             hover: {
                 mode: 'nearest',
                 intersect: true
@@ -82,6 +83,16 @@ class ForecastChart extends React.Component{
                         drawOnChartArea:false
                     }
                 }],
+                yAxes: [{
+                    gridLines: {
+                      drawBorder: false,
+                    },
+                  }],
+                //   xAxes: [{
+                //     gridLines: {
+                //       display: false,
+                //     },
+                //   }],
                 yAxes:[{
                     ticks:{
                         min:min_temp_min-5,
@@ -94,10 +105,10 @@ class ForecastChart extends React.Component{
                 }],
                 xAxes:[{
                     ticks:{
-                        stepSize:2
+                        display:false
                     },
                     gridLines:{
-                        drawOnChartArea:false
+                        
                     }
                 }]
             }

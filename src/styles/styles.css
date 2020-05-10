@@ -224,5 +224,14 @@ p{
   padding: 0;
 }
 canvas{
-  padding: 0;
+  padding: 0 10px 0 0;
 }
+.horizontal-scrollable > .row { 
+  overflow-x: auto; 
+  white-space: nowrap; 
+} 
+
+.horizontal-scrollable > .row > .col-xs-4 { 
+  display: inline-block; 
+  float: none; 
+} 

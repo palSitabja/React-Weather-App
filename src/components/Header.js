@@ -8,7 +8,7 @@ class Header extends React.Component{
         super(props)
     }
     componentDidMount=()=>{
-        if(this.props.renderedBy==="NewsBody"){
+        if(this.props.renderedBy==="NewsBody" || this.props.renderedBy==="ForecastBody"){
             document.getElementById("nav").style.backgroundColor="#292929"
             document.getElementById("nav").classList.add("fixed-top")
         }
@@ -61,7 +61,7 @@ class Header extends React.Component{
                 
                 
                 <form onSubmit={this.onSubmit} className="form-inline my-2 my-lg-0">
-                    <input name="locationsearch" id="location-inp" className="nav-input" type="search" placeholder={this.props.renderedBy==="NewsBody"?"Enter Topoc":"Enter Location"} aria-label="Search" />
+                    <input name="locationsearch" id="location-inp" className="nav-input" type="search" placeholder={this.props.renderedBy==="NewsBody"?"Enter Topic":"Enter Location"} aria-label="Search" />
                     <button className="btn  my-2 my-sm-0" type="submit">Search</button>
                 </form>
 
