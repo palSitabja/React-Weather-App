@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import moment from 'moment'
 class ForecastChart extends React.Component{
-    componentDidMount=()=>{
+    createGraph=()=>{
         var dataTemp_min=[]
         var dataTemp_max=[]
         var labels_date=[]
@@ -103,6 +103,12 @@ class ForecastChart extends React.Component{
             }
         },
         })}
+    }
+    componentDidMount=()=>{
+        this.createGraph()
+    }
+    componentDidUpdate=()=>{
+        this.createGraph()
     }
     render(){
         return (

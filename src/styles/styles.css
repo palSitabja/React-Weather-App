@@ -197,10 +197,8 @@ p{
   form{margin-top: 0;}
   to{margin-top: 3rem;}
 } */
-.loader-h1{
-  position: fixed;
-  left:40%;
-  top: 40%;
+.custom-loader{
+  margin-top: 10rem;
 }
 .forecat-card{
   /* background-color: #ffffff; */

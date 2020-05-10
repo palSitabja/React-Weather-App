@@ -4,7 +4,7 @@ import Header from '../components/Header'
 import ForecastCards from './ForecastCards'
 import ForecastChart from './ForecastChart'
 import MoonLoader from "react-spinners/MoonLoader"
-import moment from 'moment'
+import CustomLoader from './CustomLoader'
 import {Line} from 'react-chartjs-2'
 class ForecastBody extends React.Component{
 
@@ -29,16 +29,17 @@ class ForecastBody extends React.Component{
         // gradientFill.addColorStop(0, "rgba(173, 53, 186, 1)");
         // gradientFill.addColorStop(1, "rgba(173, 53, 186, 0.1)");
     }
-
+    getData=(location,data)=>{}
+       
     render(){
         return (
             <div>
-                <Header renderedBy="ForecastBody" />
+                <Header getData={this.getData} renderedBy="ForecastBody" />
                 <div className="container">
                     <div className="row chart">
                         <ForecastChart/>
                     </div>
-                    <div className="row">
+                    <div className="row justify-content-center">
                         {
                             this.props.weather.data?
                             (this.props.weather.data.daily.map((day)=>{
@@ -47,10 +48,11 @@ class ForecastBody extends React.Component{
                                     max_temp={day.temp.max} hum={day.humidity}
                                     dt={day.dt} icon={day.weather[0].icon}
                                     desc={day.weather[0].description}
+                                    key={day.dt}
                                     />
                                 )
                             })
-                            ):<div className="loader-h1"><MoonLoader size={150} color={"white"}/></div>
+                            ):<CustomLoader renderer={"forecast"}/>
                         }
                     </div>
                 </div>

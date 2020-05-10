@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import {getTimezone} from 'countries-and-timezones'
 import Header from '../components/Header'
 import NewsCard from './NewsCard'
-import MoonLoader from "react-spinners/MoonLoader"
+import CustomLoader from './CustomLoader'
 class NewsBody extends React.Component{
     constructor(props){
         super(props)
@@ -52,10 +52,10 @@ class NewsBody extends React.Component{
             <div>
             <Header fetchNews={this.fetchNews} renderedBy="NewsBody"/>
                 <div className="container-fluid news-body">
-                    <div className="row">
+                    <div className="row justify-content-center">
                     { 
                         this.state.loading
-                        ?<div className="loader-h1"><MoonLoader size={150} color={"white"}/></div>
+                        ?<CustomLoader renderer={"news"}/>
                         :this.state.news.articles.map(element => {
                             return(
                             <NewsCard heading={element.title} link={element.url} key={element.url} image={element.urlToImage}/>
