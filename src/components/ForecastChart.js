@@ -47,7 +47,7 @@ class ForecastChart extends React.Component{
                 data: dataTemp_min,
                 backgroundColor: gradientFill1,
                 borderColor: [
-                '#464668',
+                '75689b',
                 ],
                  borderWidth: 2,
                  pointBorderColor: "#fff",

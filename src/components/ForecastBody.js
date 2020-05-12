@@ -5,20 +5,20 @@ import ForecastCards from './ForecastCards'
 import ForecastChart from './ForecastChart'
 import MoonLoader from "react-spinners/MoonLoader"
 import CustomLoader from './CustomLoader'
-import {Line} from 'react-chartjs-2'
-class ForecastBody extends React.Component{
+import { Line } from 'react-chartjs-2'
+class ForecastBody extends React.Component {
 
-    constructor(props){
+    constructor(props) {
         super(props)
     }
-    componentDidMount(){
+    componentDidMount() {
         //console.log('mounted: '+JSON.stringify(this.props.weather));
         document.body.style.paddingTop='10rem'
         //document.body.style.backgroundImage="url('/video/aerial-view-and-grayscale-photography-of-high-rise-buildings-1105766.jpg')"
-        //document.body.style.backgroundAttachment='fixed'
+        document.body.style.backgroundAttachment='fixed'
         document.body.style.backgroundColor="#292929"
         document.body.style.backgroundSize='cover'
-        document.body.style.backgroundRepeat='repeat'
+        // document.body.style.backgroundRepeat='repeat'
         //document.body.style.paddingTop='10rem'
         //document.getElementsByClassName('btn').
         //document.getElementsByClassName('btn').style.backgroundColor='#606060'
@@ -28,24 +28,28 @@ class ForecastBody extends React.Component{
         // gradientFill.addColorStop(0, "rgba(173, 53, 186, 1)");
         // gradientFill.addColorStop(1, "rgba(173, 53, 186, 0.1)");
     }
-    getData=(location,data)=>{}
-       
-    render(){
+    getData = (location, data) => { }
+
+    render() {
         return (
             <div>
                 <Header getData={this.getData} renderedBy="ForecastBody" />
                 <div className="container">
                     <div className="row chart">
-                        <ForecastChart/>
+                        <ForecastChart />
                     </div>
-                    <div className="row justify-content-center">
+                </div>
+                <div className="container" style={{display:'flex',justifyContent:'center'}}>
+                    <div className="scrolling-wrapper">
+
                         {
                             this.props.weather.data?
                             (this.props.weather.data.daily.map((day)=>{
                                 return(
-                                    <ForecastCards min_temp={day.temp.min} 
-                                    max_temp={day.temp.max} hum={day.humidity}
+                                    <ForecastCards feel={day.feels_like.day} 
+                                    hum={day.humidity}
                                     dt={day.dt} icon={day.weather[0].icon}
+                                    rain={day.rain?day.rain:"0"}
                                     desc={day.weather[0].description}
                                     key={day.dt}
                                     />
@@ -53,6 +57,8 @@ class ForecastBody extends React.Component{
                             })
                             ):<CustomLoader renderer={"forecast"}/>
                         }
+
+                        
                     </div>
                 </div>
             </div>
@@ -61,13 +67,13 @@ class ForecastBody extends React.Component{
 }
 
 function mapStateToProps(state) {
-    return { 
-        weather:state.wether_reducer
-      }
-  }
-  export default connect(
-      mapStateToProps,
-  )(ForecastBody)
+    return {
+        weather: state.wether_reducer
+    }
+}
+export default connect(
+    mapStateToProps,
+)(ForecastBody)
 
 //   background-color: #923cb5;
 // background-image: linear-gradient(147deg, #923cb5 0%, #000000 74%);

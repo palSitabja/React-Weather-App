@@ -13,6 +13,7 @@ const UPDATE_LOCATION="UPDATE_LOCATION"
 const FETCH_LOCATION_REQUEST = 'FETCH_LOCATION_REQUEST'
 const FETCH_LOCATION_SUCCESS = 'FETCH_LOCATION_SUCCESS'
 const FETCH_LOCATION_FAILURE = 'FETCH_LOCATION_FAILURE'
+const REMOVE_ERROR='REMOVE_ERROR'
 
 export const fetchLocationRequest=()=>{
   return{
@@ -63,7 +64,14 @@ export const updateLocation=(loc)=>{
     return{
         type:UPDATE_LOCATION,
         location:loc
+        
     }
+}
+export const removeError=()=>{
+  return{
+      type:REMOVE_ERROR,
+      error:""   
+  }
 }
 
 
@@ -84,13 +92,20 @@ export const locationReducer = (state = locationInitialState, action) => {
         return{
           ...state,
           long:action.long,
-          lat:action.lat
+          lat:action.lat,
+          error:''
         }
       case FETCH_LOCATION_FAILURE:
           return{
             ...state,
             error:action.error
           }
+        case REMOVE_ERROR:
+            return{
+              ...state,
+              error:action.error
+            }
+      
       default: return {...state}
     }
 }

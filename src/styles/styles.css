@@ -185,7 +185,7 @@ p{
   border: 1px solid white
 }
 .card-img-top{
-  filter: brightness(65%);
+  filter: brightness(80%);
 }
 /* .animate:hover{
   opacity: 0.5;
@@ -234,4 +234,48 @@ canvas{
 .horizontal-scrollable > .row > .col-xs-4 { 
   display: inline-block; 
   float: none; 
+}
+.card-text{
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 300;
+  margin: 0;
 } 
+
+.scrolling-wrapper {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+}
+
+.scrolling-wrapper .cards {
+  display: inline-block;
+}
+.cards{
+  margin: 0 10 0 10;
+  width: 14rem;
+}
+.forecastCard-head{
+  padding-bottom: 0;
+}
+/* .forecastCard-body{
+  padding-top: 0;
+  padding-bottom: 0;
+} */
+::-webkit-scrollbar {
+  height: 1rem;              /* height of horizontal scrollbar ← You're missing this */               /* width of vertical scrollbar */
+  border: 1px solid #d5d5d5;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #76577F; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #0E324D; 
+}
+@media only screen and (max-width:500px){
+  ::-webkit-scrollbar{
+    display: none;
+  }
+}

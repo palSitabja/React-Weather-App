@@ -1,8 +1,11 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux'
-import { updateLocation,fetchCoord } from "../redux/locationStore";
+import { updateLocation,fetchCoord,removeError } from "../redux/locationStore";
 import {fetchWeather} from '../redux/weatherDataStore'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.min.css';
+toast.configure()
 class Header extends React.Component{
     constructor(props){
         super(props)
@@ -31,7 +34,16 @@ class Header extends React.Component{
             this.props.fetchWeather(this.props.location_reducer.long,this.props.location_reducer.lat)
             
         }
+
+        if(this.props.location_reducer.error){
+           
+            this.errorNotify()
+            this.props.removeError()
+        }
         this.props.getData(this.props.location_reducer,this.props.wether_reducer)
+    }
+    errorNotify=()=>{
+        toast.error('Enter Location Correctly !',{autoClose:2000})
     }
     onSubmit=(e)=>{
         e.preventDefault()
@@ -90,6 +102,7 @@ export default connect(
     mapStateToProps,
     {updateLocation,
     fetchCoord,
+    removeError,
     fetchWeather}
 )(Header)
   
