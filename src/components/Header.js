@@ -10,6 +10,14 @@ class Header extends React.Component{
     constructor(props){
         super(props)
     }
+    componentWillMount=()=>{
+        if(this.props.renderedBy==="WeatherBody" && navigator.geolocation && !this.props.wether_reducer.data){
+            navigator.geolocation.getCurrentPosition((position)=>{
+                this.props.fetchWeather(position.coords.longitude,position.coords.latitude)
+            })
+            
+        }
+    }
     componentDidMount=()=>{
         if(this.props.renderedBy==="NewsBody" || this.props.renderedBy==="ForecastBody"){
             document.getElementById("nav").style.backgroundColor="#292929"

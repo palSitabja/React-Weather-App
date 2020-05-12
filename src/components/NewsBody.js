@@ -4,6 +4,9 @@ import {getTimezone} from 'countries-and-timezones'
 import Header from '../components/Header'
 import NewsCard from './NewsCard'
 import CustomLoader from './CustomLoader'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.min.css';
+toast.configure()
 class NewsBody extends React.Component{
     constructor(props){
         super(props)
@@ -21,6 +24,9 @@ class NewsBody extends React.Component{
         .then((response)=>response.json())
         .then((data)=>{
             console.log(data)
+            if(data.totalResults===0){
+                this.errorNotify()
+            }
             //this.props.storeNewsSuccess(data)
             this.setState(()=>{
                 return{
@@ -47,6 +53,9 @@ class NewsBody extends React.Component{
             this.fetchNews(undefined,getTimezone(this.props.weather.data.timezone).country)
         }
     }
+    errorNotify=()=>{
+        toast.error('Currently No news On your Topic !',{autoClose:2000})
+    }
     render(){
         return(
             <div>
@@ -56,7 +65,8 @@ class NewsBody extends React.Component{
                     { 
                         this.state.loading
                         ?<CustomLoader renderer={"news"}/>
-                        :this.state.news.articles.map(element => {
+                        // :(this.state.news.totalResults===0?this.errorNotify()
+                         :this.state.news.articles.map(element => {
                             return(
                             <NewsCard heading={element.title} link={element.url} key={element.url} image={element.urlToImage}/>
                             )   
