@@ -18,8 +18,8 @@ class NewsBody extends React.Component{
     fetchNews=(topic,location)=>{
         const API_KEY='6e9ee8a5b6714a2f8bdc82d8365f7d05'
         let url=topic?
-        'http://newsapi.org/v2/everything?q='+topic+'&'+'from=2020-05-04&sortBy=popularity&apiKey='+API_KEY
-        :'http://newsapi.org/v2/top-headlines?country='+location+'&'+'apiKey='+API_KEY
+        'https://newsapi.org/v2/everything?q='+topic+'&'+'from=2020-05-04&sortBy=popularity&apiKey='+API_KEY
+        :'https://newsapi.org/v2/top-headlines?country='+location+'&'+'apiKey='+API_KEY
         fetch(url)
         .then((response)=>response.json())
         .then((data)=>{
