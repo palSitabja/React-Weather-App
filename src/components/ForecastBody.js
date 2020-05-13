@@ -19,14 +19,8 @@ class ForecastBody extends React.Component {
         document.body.style.backgroundColor="#292929"
         document.body.style.backgroundSize='cover'
         // document.body.style.backgroundRepeat='repeat'
-        //document.body.style.paddingTop='10rem'
         //document.getElementsByClassName('btn').
         //document.getElementsByClassName('btn').style.backgroundColor='#606060'
-
-        // var ctxL = document.getElementById("canvas").getContext('2d');
-        // var gradientFill = ctxL.createLinearGradient(0, 0, 0, 290);
-        // gradientFill.addColorStop(0, "rgba(173, 53, 186, 1)");
-        // gradientFill.addColorStop(1, "rgba(173, 53, 186, 0.1)");
     }
     getData = (location, data) => { }
 

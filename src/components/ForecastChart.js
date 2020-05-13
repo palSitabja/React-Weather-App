@@ -13,8 +13,8 @@ class ForecastChart extends React.Component{
             labels_date.push(moment.unix(day.dt).format("DD/MM/YYYY"))
         })//#923CB5
         var max_temp_max=Math.max(...dataTemp_max)
-        var min_temp_max=Math.min(...dataTemp_max)
-        var max_temp_min=Math.max(...dataTemp_min)
+        // var min_temp_max=Math.min(...dataTemp_max)
+        // var max_temp_min=Math.max(...dataTemp_min)
         var min_temp_min=Math.min(...dataTemp_min)
         var ctxL = document.getElementById("lineChart").getContext('2d');
         var gradientFill = ctxL.createLinearGradient(0, 0, 0, 290);
@@ -66,8 +66,10 @@ class ForecastChart extends React.Component{
                 mode: 'index',
                 intersect: false,
                 backgroundColor	:'rgba(255, 255, 255, 0.1)',
-                titleFontColor:'#313440',
-                bodyFontColor:'#313440',
+                titleFontColor:'#CFC3D1',
+                titleFontSize:20,
+                titleAlign:'center',
+                bodyFontColor:'#CFC3D1',
                 bodyFontStyle:'bold',
                 borderColor: '#000000',
                 borderWidth: 1,
@@ -78,21 +80,6 @@ class ForecastChart extends React.Component{
                 intersect: true
             },
             scales:{
-                xAxes:[{
-                    gridLines:{
-                        drawOnChartArea:false
-                    }
-                }],
-                yAxes: [{
-                    gridLines: {
-                      drawBorder: false,
-                    },
-                  }],
-                //   xAxes: [{
-                //     gridLines: {
-                //       display: false,
-                //     },
-                //   }],
                 yAxes:[{
                     ticks:{
                         min:min_temp_min-5,
@@ -100,15 +87,18 @@ class ForecastChart extends React.Component{
                         stepSize:5
                     },
                     gridLines:{
-                        drawOnChartArea:false
+                        drawOnChartArea:false,
+                        display: false,
                     }
                 }],
                 xAxes:[{
+                    //offset: true,
                     ticks:{
                         display:false
                     },
                     gridLines:{
-                        
+                        drawOnChartArea:false,
+                        display: false,
                     }
                 }]
             }
