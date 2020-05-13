@@ -8,7 +8,10 @@
     overflow: hidden;
     z-index: -1;
  }
-
+/* .navbar{
+  margin-left: 0.3rem;
+  margin-right: 0.3rem;
+} */
 .nav-input{
   
     border-radius: 50px;
@@ -17,7 +20,7 @@
     color: white;
     flood-color: #fff;
     height: 2.4rem;
-    margin-left: 2rem;
+    margin-left: 1rem;
     margin-right: 1rem;
     
 }

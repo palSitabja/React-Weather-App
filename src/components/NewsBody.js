@@ -23,7 +23,7 @@ class NewsBody extends React.Component{
         fetch(url)
         .then((response)=>response.json())
         .then((data)=>{
-            console.log(data)
+            //console.log(data)
             if(data.totalResults===0){
                 this.errorNotify()
             }
@@ -37,7 +37,7 @@ class NewsBody extends React.Component{
         })
     }
     componentDidMount(){
-        console.log('mounted: '+JSON.stringify(this.props.weather));
+        //console.log('mounted: '+JSON.stringify(this.props.weather));
         
         //document.body.style.backgroundImage="url('/video/aerial-view-and-grayscale-photography-of-high-rise-buildings-1105766.jpg')"
         //document.body.style.backgroundAttachment='fixed'
@@ -48,7 +48,7 @@ class NewsBody extends React.Component{
         //document.getElementsByClassName('btn').
         //document.getElementsByClassName('btn').style.backgroundColor='#606060'
         if(this.props.weather.data!==""){
-            console.log("inside newsBody componentdidMount: "+getTimezone(this.props.weather.data.timezone).country)
+            //console.log("inside newsBody componentdidMount: "+getTimezone(this.props.weather.data.timezone).country)
             //console.log("inside newsBody componentdidMount: "+getTimezone("Asia/Kolkata").country)
             this.fetchNews(undefined,getTimezone(this.props.weather.data.timezone).country)
         }
@@ -80,7 +80,6 @@ class NewsBody extends React.Component{
     }
 }
 function mapStateToProps(state) {
-    console.log(state);
     
     return { 
         weather:state.wether_reducer

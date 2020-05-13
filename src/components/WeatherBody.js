@@ -28,32 +28,39 @@ class WeatherBody extends React.Component{
             icon:"none"
         }
     }
+    setstate=(data)=>{
+        this.setState(()=>{
+            return{
+                //current:data.current,
+                location:this.props.weather.data.timezone,
+                description:this.props.weather.data.current.weather[0].description,
+                temp:parseInt(this.props.weather.data.current.temp),
+                humidity:this.props.weather.data.current.humidity+' %',
+                feels_like:this.props.weather.data.current.feels_like+' C',
+                pressure:this.props.weather.data.current.pressure+' hPa',
+                wind_speed:this.props.weather.data.current.wind_speed+' met/s',
+                sunrise:moment.unix(this.props.weather.data.current.sunrise).format(" h:mm a"),
+                sunset:moment.unix(this.props.weather.data.current.sunset).format(" h:mm a"),
+                loading:false,
+                class:"notransition",
+                icon:this.props.weather.data.current.weather[0].icon
+            }
+        })
+    }
     getData=(location,data)=>{
         //console.log("inside weather body\n"+JSON.stringify(location));
         if (this.props.weather.data.current){
             
-            console.log("inside setstate\n");
-            this.setState(()=>{
-                return{
-                    current:data.current,
-                    location:this.props.weather.data.timezone,
-                    description:this.props.weather.data.current.weather[0].description,
-                    temp:parseInt(this.props.weather.data.current.temp),
-                    humidity:this.props.weather.data.current.humidity+' %',
-                    feels_like:this.props.weather.data.current.feels_like+' C',
-                    pressure:this.props.weather.data.current.pressure+' hPa',
-                    wind_speed:this.props.weather.data.current.wind_speed+' met/s',
-                    sunrise:moment.unix(this.props.weather.data.current.sunrise).format(" h:mm a"),
-                    sunset:moment.unix(this.props.weather.data.current.sunset).format(" h:mm a"),
-                    loading:false,
-                    class:"notransition",
-                    icon:this.props.weather.data.current.weather[0].icon
-                }
-            })
+            //console.log("inside setstate\n");
+            this.setstate(data)
+
         }
     }
      componentDidMount=()=>{
         document.body.style.paddingTop='0'
+        if(this.props.weather.data){
+            this.setstate()
+        }
      }
 
     render() {

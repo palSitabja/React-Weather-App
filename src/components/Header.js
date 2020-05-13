@@ -15,7 +15,9 @@ class Header extends React.Component{
             navigator.geolocation.getCurrentPosition((position)=>{
                 this.props.fetchWeather(position.coords.longitude,position.coords.latitude)
             })
-            
+            // if(this.props.getData){
+            //     this.props.getData(this.props.location_reducer,this.props.wether_reducer)
+            // }
         }
     }
     componentDidMount=()=>{
@@ -23,10 +25,10 @@ class Header extends React.Component{
             document.getElementById("nav").style.backgroundColor="#292929"
             document.getElementById("nav").classList.add("fixed-top")
         }
-        console.log("inside component didMount before if Header: "+this.props.location_reducer.long);
+        //console.log("inside component didMount before if Header: "+this.props.location_reducer.long);
         
         if(this.props.location_reducer.long){
-            console.log("inside component didMount Header: "+this.props.location_reducer.long);
+            //console.log("inside component didMount Header: "+this.props.location_reducer.long);
             if(this.props.getData){
                 this.props.getData(this.props.location_reducer,this.props.wether_reducer)
             }
@@ -56,7 +58,7 @@ class Header extends React.Component{
     onSubmit=(e)=>{
         e.preventDefault()
          //this.props.getLocation(e.target.locationsearch.value)
-        console.log(e.target.locationsearch.value)
+        //console.log(e.target.locationsearch.value)
         if(e.target.locationsearch.placeholder==="Enter Location"){
         this.props.updateLocation(e.target.locationsearch.value)
         setTimeout(()=>{
@@ -68,23 +70,24 @@ class Header extends React.Component{
     }
     render(){
         return(
-            <nav id="nav" className="navbar navbar-expand-lg d-flex flex-row justify-content-around">
-                <h1 className="">
-                {this.props.renderedBy==="WeatherBody"?"Weather":this.props.renderedBy==="NewsBody"?"News":"Forecast"}
-                </h1>
+            <nav id="nav" className="navbar navbar-expand-lg d-flex flex-row justify-content-lg-between justify-content-around">
                 
-                    <div className="" role="group">
-                        <NavLink to="/" className="btn mr-4 custom" activeClassName="is-active" exact={true}>Weather</NavLink>
-                        <NavLink to="/forecast" className="btn mr-4 custom" activeClassName="is-active">Forecast</NavLink>
-                        <NavLink to="/news" className="btn custom" activeClassName="is-active">News</NavLink>
-                    </div>
+                    <h1 className="">
+                    {this.props.renderedBy==="WeatherBody"?"Weather":this.props.renderedBy==="NewsBody"?"News":"Forecast"}
+                    </h1>
+                    
+                        <div className="" role="group">
+                            <NavLink to="/" className="btn mr-4 custom" activeClassName="is-active" exact={true}>Weather</NavLink>
+                            <NavLink to="/forecast" className="btn mr-4 custom" activeClassName="is-active">Forecast</NavLink>
+                            <NavLink to="/news" className="btn custom" activeClassName="is-active">News</NavLink>
+                        </div>
+                    
+                    
+                    <form onSubmit={this.onSubmit} className="form-inline my-2 my-lg-0">
+                        <input name="locationsearch" id="location-inp" className="nav-input" type="search" placeholder={this.props.renderedBy==="NewsBody"?"Enter Topic":"Enter Location"} aria-label="Search" />
+                        <button className="btn  my-2 my-sm-0" type="submit">Search</button>
+                    </form>
                 
-                
-                <form onSubmit={this.onSubmit} className="form-inline my-2 my-lg-0">
-                    <input name="locationsearch" id="location-inp" className="nav-input" type="search" placeholder={this.props.renderedBy==="NewsBody"?"Enter Topic":"Enter Location"} aria-label="Search" />
-                    <button className="btn  my-2 my-sm-0" type="submit">Search</button>
-                </form>
-
             </nav>
         )
     }

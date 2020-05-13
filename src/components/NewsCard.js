@@ -2,7 +2,7 @@ import React from 'react'
 
 const NewsCard=(props)=>{
     return(
-        <div className="col-sm-3 animate">
+        <div className="col-sm-6 col-md-6 animate">
             <div className="card img-fluid">
                 <img src={props.image?props.image:"/video/unknownNews.jpg"} className="card-img-top" alt="..."/>
                     <div className="card-img-overlay">
