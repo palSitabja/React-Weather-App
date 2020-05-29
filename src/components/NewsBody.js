@@ -16,11 +16,12 @@ class NewsBody extends React.Component{
         }
     }
     fetchNews=(topic,location)=>{
+        const proxyurl = "https://cors-anywhere.herokuapp.com/";
         const API_KEY='6e9ee8a5b6714a2f8bdc82d8365f7d05'
         let url=topic?
         'https://newsapi.org/v2/everything?q='+topic+'&'+'from=2020-05-04&sortBy=popularity&apiKey='+API_KEY
         :'https://newsapi.org/v2/top-headlines?country='+location+'&'+'apiKey='+API_KEY
-        fetch(url)
+        fetch(proxyurl+url)
         .then((response)=>response.json())
         .then((data)=>{
             //console.log(data)
