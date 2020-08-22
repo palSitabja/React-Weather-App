@@ -17,7 +17,7 @@ class NewsBody extends React.Component{
         }
     }
     fetchNews=(topic,location)=>{
-        const proxyurl = ''//"https://cors-anywhere.herokuapp.com/";
+        //const proxyurl = ''//"https://cors-anywhere.herokuapp.com/";
         const API_KEY='6e9ee8a5b6714a2f8bdc82d8365f7d05'
 
         const tenDaysBefore=moment().subtract(10,'d').format('YYYY-MM-DD')
@@ -28,7 +28,7 @@ class NewsBody extends React.Component{
         :'https://newsapi.org/v2/top-headlines?country='+location+'&'+'apiKey='+API_KEY
         //console.log(proxyurl+url);
         
-        fetch(proxyurl+url)
+        fetch(url)
         .then((response)=>response.json())
         .then((data)=>{
             //console.log(data)
